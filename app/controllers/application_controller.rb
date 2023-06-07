@@ -62,9 +62,6 @@ class ApplicationController < Sinatra::Base
   patch "/works/:id" do
     updated_work = Work.find(params[:id])
     updated_work.update(
-      title: params[:title],
-      work_url: params[:work_url],
-      artist_id: params[:artist_id],
       liked: params[:liked]
     )
     updated_work.to_json
