@@ -44,7 +44,8 @@ class ApplicationController < Sinatra::Base
       title: params[:title],
       work_url: params[:work_url],
       artist_id: params[:artist_id],
-      liked: params[:liked]
+      liked: params[:liked],
+      creation_date: params[:creation_date]
     )
     new_work.to_json
   end
