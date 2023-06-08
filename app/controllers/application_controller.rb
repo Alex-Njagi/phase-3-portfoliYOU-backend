@@ -51,12 +51,12 @@ class ApplicationController < Sinatra::Base
 
   get "/works" do
     works = Work.all
-    works.to_json
+    works.to_json({include: :artist})
   end
 
   get "/works/:id" do
     work = Work.find(params[:id])
-    work.to_json
+    work.to_json({include: :artist})
   end
 
   patch "/works/:id" do
@@ -64,13 +64,13 @@ class ApplicationController < Sinatra::Base
     updated_work.update(
       liked: params[:liked]
     )
-    updated_work.to_json
+    updated_work.to_json({include: :artist})
   end
 
   delete "/works/:id" do
     del_work = Work.find(params[:id])
     del_work.destroy
-    del_work.to_json
+    del_work.to_json({include: :artist})
   end
 
 end
